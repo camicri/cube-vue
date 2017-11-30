@@ -1,6 +1,7 @@
 <template>
 <div class="main">
-  <el-button v-show="!onProjectLoading" type="danger" :plain="true" class="quit" @click="quit()">Quit</el-button> 
+  <el-button v-show="!onProjectLoading" type="danger" :plain="true" class="quit" @click="quit()"><span class="el-icon-circle-close"></span> Quit</el-button> 
+  <a target="_blank" :href="docURL"><el-button v-show="!onProjectLoading" type="primary" :plain="true" class="doc"><span class="el-icon-information"></span> Help</el-button></a>
   <transition name="fade">
    <div class="startup" v-show="!onProjectLoading">
       <template>
@@ -72,6 +73,11 @@
   position: absolute;
 }
 
+.doc {
+  position: absolute;
+  right: 0px;
+}
+
 .startup {
    display: flex;
    flex-direction: column;
@@ -114,6 +120,7 @@ export default {
       percent : 0,
       version : '',
       os : 'WINDOWS',
+      docURL : '',
       onProjectLoading : false,
       evt : new Eventor(),
     }
@@ -122,6 +129,8 @@ export default {
   async created() {
     let env = await sys.environmentData();
     this.os = env.operating_system;
+    this.docURL = await sys.cubeData();
+    this.docURL = this.docURL.documentation_url;
 
     this.projects = await project.getProjects();
     if(this.projects.length > 0)
