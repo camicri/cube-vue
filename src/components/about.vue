@@ -16,7 +16,7 @@
           </div>
           <div class="app-name">{{cube.application_name}}</div>
           <div class="description">{{cube.short_description}}</div>
-          <div class="version">v{{cube.application_version+'.'+cube.application_revision}}</div>
+          <div class="version">{{cube.application_series}} Series | Version {{cube.application_version}}</div>
           <hr class="divider">
           
           <div class="links">
