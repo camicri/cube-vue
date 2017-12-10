@@ -302,9 +302,11 @@ export default {
       this.onProgress = false;
       this.currDownloading = undefined;
 
-      /* Reset images */
-      for (let img of document.getElementsByClassName("imgload"))
-        img.src = "/static/images/package-x-generic.svg"
+      if(this.pkg !== undefined && this.pkg.name != name) {
+        /* Reset images */
+        for (let img of document.getElementsByClassName("imgload"))
+          img.src = "/static/images/package-x-generic.svg"
+      }
 
       this.pkg = await repo.findPackage(name);
 
