@@ -45,8 +45,10 @@
     width: 100%;
 }
 .media-object {
-    max-width: 48px;
+    width: 48px;
+    height: 48px;
     min-width: 48px;
+    max-width: 48px;
 }
 </style>
 
