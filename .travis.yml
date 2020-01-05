@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 10
+script:
+  - npm install
+  - npm run build
+  - zip -r cube-vue-dist.zip dist/*
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: cube-vue-dist.zip
+  skip_cleanup: true
+  on:
+    tags: true
