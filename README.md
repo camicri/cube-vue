@@ -1,6 +1,6 @@
-# cube-vue
+# Camicri Cube UI
 
-> Cube frontend
+Frontend of cube-get written in VueJS [![Build Status](https://travis-ci.com/camicri/cube-vue.svg?branch=master)](https://travis-ci.com/camicri/cube-vue)
 
 ## Build Setup
 
@@ -17,5 +17,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
