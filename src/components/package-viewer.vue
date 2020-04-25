@@ -67,7 +67,7 @@
             </el-col>
             <el-col :span="15">
               <div class="screenshot">
-                <img class="image imgload" onerror="this.src='/static/images/package-x-generic.svg'" :src="'http://screenshots.ubuntu.com/screenshot/'+pkg.name" />
+                <img class="image imgload" onerror="this.src='/static/images/package-x-generic.svg'" :src="'https://screenshots.debian.net/screenshot/'+pkg.name" />
               </div>
             </el-col>
           </el-row>
@@ -87,7 +87,7 @@
 }
 
 .heading {
-  position: absolute; 
+  position: absolute;
   display: flex;
   align-items: center;
 }
@@ -319,7 +319,7 @@ export default {
       this.loading = true;
       this.depends = [];
       this.size = '0 bytes';
-      
+
       let depends = await repo.getDependencies(this.pkg.name);
 
       if (depends.unsatisfied.length > 0) {
