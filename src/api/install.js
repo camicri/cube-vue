@@ -3,6 +3,7 @@ import globals from '@/utils/globals';
 
 class Install {
   async install(name) {
+    name = name.replace(/\+/g,"%2b");
     const response = await axios.get(globals.baseURL+'/cmd/install/install-package?package='+name);
     return response.data;
   }

@@ -3,6 +3,7 @@ import globals from '@/utils/globals';
 
 class Download {
   async download(name) {
+    name = name.replace(/\+/g,"%2b");
     const response = await axios.get(globals.baseURL+'/cmd/download/download-package?package='+name);
     return response.data;
   }

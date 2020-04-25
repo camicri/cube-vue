@@ -53,6 +53,7 @@ class Repository {
   }
 
   async findPackage(name) {
+    name = name.replace(/\+/g,"%2b");
     const response = await axios.get(globals.baseURL+'/cmd/repository/find-package?package='+name);
     if (response.data.length > 0)
       return response.data[0]
@@ -61,16 +62,19 @@ class Repository {
   }
 
   async findPackageStartsWith(name) {
+    name = name.replace(/\+/g,"%2b");
     const response = await axios.get(globals.baseURL+'/cmd/repository/find-package-starts-with?package='+name);
     return response.data;
   }
 
   async getDependencies(name,type) {
+    name = name.replace(/\+/g,"%2b");
     const response = await axios.get(globals.baseURL+'/cmd/repository/get-package-dependencies?package='+name+((type!==undefined)?"&&type="+type:""));
     return response.data;
   }
 
   async getSatisfiedDownloadedPackages() {
+    name = name.replace(/\+/g,"%2b");
     const response = await axios.get(globals.baseURL+'/cmd/repository/get-satisfied-downloaded-packages');
     return response.data;
   }
@@ -81,11 +85,13 @@ class Repository {
   }
 
   async markPackage(type,name) {
+    name = name.replace(/\+/g,"%2b");
     const response = await axios.get(globals.baseURL+'/cmd/repository/mark-package?type='+type+'&&package='+name);
     return response.data;
   }
 
   async unmarkPackage(type,name) {
+    name = name.replace(/\+/g,"%2b");
     const response = await axios.get(globals.baseURL+'/cmd/repository/unmark-package?type='+type+'&&package='+name);
     return response.data;
   }
