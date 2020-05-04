@@ -9,16 +9,16 @@
       </div>
 
       <div class="body">
-        
+
         <template v-if="show=='about'">
           <div>
             <img class="logo" src="/static/images/cubelogo.png"/>
           </div>
           <div class="app-name">{{cube.application_name}}</div>
           <div class="description">{{cube.short_description}}</div>
-          <div class="version">{{cube.application_series}} Series | Version {{cube.application_version}}</div>
+          <div class="version">Version {{cube.application_version}}</div>
           <hr class="divider">
-          
+
           <div class="links">
             <a title="Launchpad Page" target="_blank" :href="cube.launchpad_url">
               <img src="/static/images/launchpad.ico"/>
@@ -27,7 +27,7 @@
               <img src="/static/images/facebook.ico"/>
             </a>
           </div>
-          
+
           <div class="author" v-for="a in cube.authors" :key="a.name">{{a.name}}</div>
         </template>
         <template v-if="show=='license'">
@@ -43,7 +43,7 @@
           <el-button size="large" :type="show=='license'?'primary':'default'" @click="show='license'">License</el-button>
         </el-button-group>
       </div>
-      
+
     </el-card>
   </div>
 </template>
@@ -147,7 +147,7 @@ export default {
       show : 'about',
     }
   },
-  
+
   methods : {
     back() {
       EventBus.$emit('change-view', 'previous');
