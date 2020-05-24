@@ -1,7 +1,7 @@
 <template>
 <el-card class="box-card">
   <div class="container" @mouseenter="showMarker=true" @mouseleave="showMarker=false">
-    <img id='icon' class='media-object' onerror="this.src='/static/images/package-x-generic.svg'" :src='"https://apps.ubuntu.com/site_media/icons/2015/03/"+p.name+".png"'/>
+    <img id='icon' class='media-object' src="/static/images/package-x-generic.svg"/>
     <div class="info">
       <div>{{p.name}}</div>
       <div class="description">{{p.description | toSentence}}</div>
@@ -92,7 +92,7 @@ export default {
       return val
     }
   },
-  
+
   methods : {
     async refresh() {
       let info = await repo.findPackage(this.p.name)
