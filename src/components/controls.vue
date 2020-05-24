@@ -2,8 +2,7 @@
 <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="colapse" theme="dark">
   <el-submenu class="tile" index="1">
     <template slot="title">
-      <icon v-if="original" name="cube" style="color:lightgreen"></icon>
-      <icon v-else name="cube"></icon>
+        <img class="logo" src="/static/images/cubelogo.png" style="height:35px;width:35px;margin-left:-5px"/>
       <span slot="title">Cube</span>
     </template>
     <el-submenu index="repo">
@@ -55,7 +54,7 @@
       <el-tag class="size" type="gray">{{m.count.toLocaleString()}}</el-tag>
     </el-menu-item>
   </el-submenu>
-  
+
   <el-menu-item  class="tile" @click="sectionChanged(s)" v-for="s in sections" :index="s.name" :key="s.name">
     <i><icon :name="s.fontIcon"></icon></i>
     <span slot="title">
@@ -145,7 +144,7 @@ export default {
     sectionChanged(section) {
       EventBus.$emit('package-lister-section',section.name,section.description);
     },
-    
+
     getFontIcon(name) {
       switch(name) {
         case 'educ' : return 'flask';

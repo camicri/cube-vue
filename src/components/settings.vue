@@ -1,17 +1,17 @@
 <template>
   <div class="viewer">
-    <el-card class="card" body-style="padding:0px"> 
+    <el-card class="card" body-style="padding:0px">
       <div class="container">
         <div class="heading">
           <el-button type="primary" @click="back" class="back el-icon-arrow-left"></el-button>
-          <div class="title">Cube Settings</div>
+          <div class="title">CubeGet Settings</div>
         </div>
 
         <div class="content">
 
           <el-tabs v-model="active">
             <div class="status" v-if="status"><el-alert :closable="false" class="alert" :title="status.message" :type="status.type"></el-alert></div>
-            
+
             <el-tab-pane label="Installer" name="installer">
               <span slot="label">Installer</span>
               <el-form :model="installerForm">
@@ -20,7 +20,7 @@
                     <el-option v-for="i in installerForm.installers" :key="i" :label="i" :value="i"></el-option>
                   </el-select>
                 </el-form-item>
-                
+
                 <el-form-item label="Apt Get Parameters">
                   <el-input v-model="installerForm.aptgetParameters"></el-input>
                 </el-form-item>
@@ -46,7 +46,7 @@
                     <el-option v-for="d in downloaderForm.downloaders" :key="d" :label="d" :value="d"></el-option>
                   </el-select>
                 </el-form-item>
-                
+
                 <el-form-item label="Axel Parameters">
                   <el-input v-model="downloaderForm.axelParameters"></el-input>
                 </el-form-item>
@@ -70,14 +70,14 @@
 
             <el-tab-pane label="Server" name="server">
               <el-form :model="serverForm">
-                <el-form-item label="Port Number" prop="port" 
+                <el-form-item label="Port Number" prop="port"
                 :rules="[{ type: 'number', message: 'Port must be a number'}]"
                 >
                   <el-input type="port" v-model.number="serverForm.port"></el-input>
                 </el-form-item>
               </el-form>
             </el-tab-pane>
-            
+
           </el-tabs>
 
           <div class="controls"><el-button @click="save" type="primary">Save</el-button><el-button @click="reset">Reset</el-button></div>
@@ -186,7 +186,7 @@ export default {
   methods : {
     async load() {
       const res = await conf.configurationEntries();
-      
+
       this.installerForm.installers = res.installers.split(',');
       this.installerForm.installer = res.default_installer;
       this.installerForm.aptgetParameters = res.apt_get_parameters;
@@ -203,7 +203,7 @@ export default {
 
     async save() {
       let entries = '';
-	    
+
 	    entries += 'default_installer=' + this.installerForm.installer;
 	    entries += '&apt_get_parameters=' + this.installerForm.aptgetParameters;
 	    entries += '&dpkg_parameters=' + this.installerForm.dpkgParameters;
@@ -238,7 +238,7 @@ export default {
 
     async reset() {
       const res = await conf.resetConfigurationEntries();
-      
+
       if(res.success) {
         this.status = {
           type : 'success',

@@ -1,13 +1,13 @@
 <template>
 <div class="main">
-  <el-button v-show="!onProjectLoading" type="danger" :plain="true" class="quit" @click="quit()"><span class="el-icon-circle-close"></span> Quit</el-button> 
+  <el-button v-show="!onProjectLoading" type="danger" :plain="true" class="quit" @click="quit()"><span class="el-icon-circle-close"></span> Quit</el-button>
   <a target="_blank" :href="docURL"><el-button v-show="!onProjectLoading" type="primary" :plain="true" class="doc"><span class="el-icon-information"></span> Help</el-button></a>
   <transition name="fade">
    <div class="startup" v-show="!onProjectLoading">
       <template>
 
         <img class="logo" src="/static/images/cubelogo.png"/>
-        <span class="title gap-less">Camicri Cube</span>
+        <span class="title gap-less">CubeGet</span>
         {{version}}
         <div>
         <el-alert v-show="result.message"
@@ -43,7 +43,7 @@
   </transition>
   <transition name="fade">
    <div class="startup" v-show="onProjectLoading">
-     Cube is now loading your project. Please Wait.
+     CubeGet is now loading your project. Please Wait.
      <div class="gap-less"></div>
      <el-progress type="circle" :text-inside="true" :stroke-width="18"  :percentage="percent" :width="200"></el-progress>
    </div>
@@ -184,7 +184,7 @@ export default {
     },
 
     async quit() {
-      sys.quit(); 
+      sys.quit();
       EventBus.$emit('ws-quit');
     },
     async initProjectEvents() {
@@ -194,7 +194,7 @@ export default {
         await repo.scan();
       });
     },
-    
+
     async initRepoEvents() {
       this.evt.on('ws-repository-scan-started',()=>{});
 
