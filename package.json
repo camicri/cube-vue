@@ -1,7 +1,7 @@
 {
   "name": "cube-vue",
   "version": "1.0.0",
-  "description": "Cube frontend",
+  "description": "CubeGet Frontend",
   "author": "Jake Capangpangan <camicrisystems@gmail.com>",
   "private": true,
   "scripts": {

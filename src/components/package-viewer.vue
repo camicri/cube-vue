@@ -9,7 +9,7 @@
           <el-row>
             <div class="header">
               <div class="icon-holder">
-                <img class='icon imgload' onerror="this.src='/static/images/package-x-generic.svg'" :src='"https://apps.ubuntu.com/site_media/icons/2015/03/"+pkg.name+".png"' />
+                <img class='icon imgload' src="/static/images/package-x-generic.svg"/>
               </div>
               <div class="info">
                 <div class="title">{{pkg.name | toSentence}}</div>

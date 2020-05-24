@@ -112,7 +112,6 @@ import project from '@/api/project';
 
 export default {
   name: 'main',
-  
   components: {
     'progress-modal': ProgressModal,
     'prompt-modal': PromptModal,
@@ -126,7 +125,7 @@ export default {
     'settings': Settings,
     'about': About,
   },
-  
+
   data() {
     return {
       initialized: false,
@@ -136,7 +135,7 @@ export default {
       evt: new Eventor(),
     }
   },
-  
+
   async created() {
     this.name = '';
 
@@ -145,7 +144,7 @@ export default {
       this.$router.push('/');
       return;
     }
-    
+
     this.initialized = true;
 
     /* Initialize Events */
@@ -157,7 +156,7 @@ export default {
     this.initDownloadEvents();
     this.initInstallEvents();
   },
-  
+
   beforeDestroy(){
     this.evt.clear();
   },
@@ -174,7 +173,7 @@ export default {
     },
 
     quit() {
-      sys.quit(); 
+      sys.quit();
       EventBus.$emit('ws-quit');
     },
 
@@ -323,7 +322,7 @@ export default {
           await repo.markPackage("to-download",pkgs);
           EventBus.$emit('refresh');
         }, () => {/*Cancel*/});
-        
+
       } else {
         EventBus.$emit('dependency-lister', 'To be installed', 'These ' + res.satisfied.length + ' packages will be installed', res.satisfied, async () => {
           let pkgs = '';
@@ -371,7 +370,7 @@ export default {
       });
     },
 
-    
+
     /*** Repository Methods ***/
     initRepoEvents() {
       this.evt.on('ws-repository-scan-started', () => { });
@@ -404,7 +403,7 @@ export default {
             EventBus.$emit('download-result', 'Failed to Download', 'The following repositories failed to be downloaded', res.failed);
           }
         });
-        EventBus.$emit('prompt','Update Computer\'s Repositories', 'Please update your original computer\'s repositories (Under Cube Icon => System) before installing new applications.');
+        EventBus.$emit('prompt','Update Computer\'s Repositories', 'Please update your original computer\'s repositories (Under CubeGet Icon => System) before installing new applications.');
       });
 
       this.evt.on('download-progress-cancel', () => {
