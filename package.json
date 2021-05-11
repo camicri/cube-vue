@@ -13,7 +13,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "element-ui": "^1.4.4",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "vue": "^2.4.2",
     "vue-awesome": "^2.3.4",
     "vue-lodash": "^1.0.4",
